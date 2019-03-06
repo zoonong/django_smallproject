@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for blog in posts %}
+    <br>
+    <div class="container">
+        <a href="{% url 'detail' blog.id %}">
+            <h1>{{ blog.title }}</h1>
+        </a>
+        <p>{{ blog.pub_date_pretty }}</p>
+        <p>{{ blog.summary }}<a href="{% url 'detail' blog.id %}">.... more</a> </p>
+    </div>
+    {% endfor %}
+    <div class="ui four column centered grid" style="margin-top:50px">
+        {{posts.number}} of {{posts.paginator.num_pages}}
+        </div>
+        
+        <div class="ui four column centered grid">
+        <a href="?page=1">처음</a> |
+        {% if posts.has_previous %}
+        <a href="?page={{posts.previous_page_number}}">이전</a> |
+        {% endif %}
+        {% if posts.has_next %}
+        <a href="?page={{posts.next_page_number}}">다음</a> |
+        {% endif %}
+        <a href="?page={{posts.paginator.num_pages}}">마지막</a>
+        </div>
+{% endblock %}
