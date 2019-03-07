@@ -22,6 +22,7 @@ def create(request):
     blog = Blog()
     blog.title = request.GET['title']
     blog.body = request.GET['body']
+    blog.star = request.GET['star']
     blog.pub_date = timezone.datetime.now()
     blog.save()
     return redirect('/blog/' + str(blog.id))

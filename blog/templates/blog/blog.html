@@ -6,8 +6,9 @@
     <br>
     <div class="container">
         <a href="{% url 'detail' blog.id %}">
-            <h1>{{ blog.title }}</h1>
+            <h1>{{ blog.title }}</h1><br>
         </a>
+        <h4>평점 : {{ blog.star }}</h4>
         <p>{{ blog.pub_date_pretty }}</p>
         <p>{{ blog.summary }}<a href="{% url 'detail' blog.id %}">.... more</a> </p>
     </div>
